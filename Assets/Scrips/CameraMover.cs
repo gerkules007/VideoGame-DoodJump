@@ -8,6 +8,15 @@ public class CameraMover : MonoBehaviour
     public float speed;
     void Update()
     {
+        // Когда позиция камеры соединиться с позицией игрока
+        if(Player.position.y > transform.position.y)
+        {
+            // Двигаем строго по Y
+            Vector3 newPosition = Player.position;
+            newPosition.x = 0;
+            newPosition.z = transform.position.z;
 
+            transform.position = newPosition;
+        }
     }
 }
