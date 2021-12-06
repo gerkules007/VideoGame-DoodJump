@@ -6,6 +6,12 @@ public class CameraMover : MonoBehaviour
 {
     public Transform Player;
     public float speed;
+    public GameObject RestartPanel;
+
+    private void Start()
+    {
+        RestartPanel.SetActive(false);
+    }
     void Update()
     {
         if (Player)
@@ -25,6 +31,8 @@ public class CameraMover : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.GetComponent<DoodPlayer>()) RestartPanel.SetActive(true);
+        
         Destroy(collision.gameObject);
     }
 }
